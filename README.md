@@ -1,2 +1,2 @@
 # Sentiment-Analysis
-StreamLit App for sentiment analysis of data.
+StreamLit App for Sentiment Analysis of data.
