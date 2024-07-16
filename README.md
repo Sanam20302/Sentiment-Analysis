@@ -1,6 +1,6 @@
 # Sentiment-Analysis-Using-StreamLit
 StreamLit App for Sentiment Analysis of given data.
-In this application, 
+\nIn this application, 
 - First, we will be asked to upload a csv file containing a column named "quotes".
 - This column should contain different quotes for sentiment analysis.
 - Textblob will work on this data.
