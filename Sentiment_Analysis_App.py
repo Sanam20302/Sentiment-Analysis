@@ -1,4 +1,7 @@
-pip Install textblob
+python -m pip uninstall pip
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py --user
+python -m pip install --user textblob
 import streamlit as st
 import pandas as pd
 from textblob import TextBlob
