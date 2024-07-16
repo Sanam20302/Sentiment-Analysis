@@ -1,4 +1,4 @@
-!pip3 install -U textblob
+pip3 install -U textblob
 import streamlit as st
 import pandas as pd
 from textblob import TextBlob
