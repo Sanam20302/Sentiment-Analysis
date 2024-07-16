@@ -1,6 +1,7 @@
-import subprocess 
-cmd = ['python3', '-m','textblob.download_corpora']
-subprocess.run(cmd)
+# import subprocess 
+# cmd = ['python3', '-m','textblob.download_corpora']
+# subprocess.run(cmd)
+python -m textblob.download_corpora
 import streamlit as st
 import pandas as pd
 from textblob import TextBlob
