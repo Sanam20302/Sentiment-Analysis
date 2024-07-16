@@ -1,8 +1,4 @@
-import subprocess 
-cmd = ['pip', 'install','-U','textblob']
-subprocess.run(cmd)
-# pip install -U textblob
-# python -m textblob.download_corpora
+!pip3 install -U textblob
 import streamlit as st
 import pandas as pd
 from textblob import TextBlob
