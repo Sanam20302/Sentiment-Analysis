@@ -1,35 +1,34 @@
 import streamlit as st
 import pandas as pd
-from nltk.sentiment import SentimentIntensityAnalyzer
+from textblob import TextBlob
 from io import StringIO
 
-# Function to analyze sentiment using VADER
-def analyze_sentiment_vader(text):
-    analyzer = SentimentIntensityAnalyzer()
-    scores = analyzer.polarity_scores(text)
-    if scores['compound'] >= 0.05:
+# Function to analyze sentiment
+def analyze_sentiment(quote):
+    analysis = TextBlob(quote)
+    if analysis.sentiment.polarity > 0:
         return 'positive'
-    elif scores['compound'] <= -0.05:
+    elif analysis.sentiment.polarity < 0:
         return 'negative'
     else:
         return 'neutral'
 
 # Streamlit app
 def main():
-    st.title("Sentiment Analysis with VADER")
-
-    uploaded_file = st.file_uploader("Upload a CSV file", type=['csv'])
+    st.title('Sentiment Analysis of Quotes')
+    
+    uploaded_file = st.file_uploader('Upload a CSV file', type=['csv'])
     
     if uploaded_file is not None:
         # Read the uploaded CSV file
         data = pd.read_csv(uploaded_file)
         
         # Check if the CSV file contains the necessary column
-        if 'text' not in data.columns:
-            st.error('CSV file must contain a "text" column')
+        if 'quote' not in data.columns:
+            st.error('CSV file must contain a "quote" column')
         else:
-            # Analyze sentiment for each text
-            data['sentiment'] = data['text'].apply(analyze_sentiment_vader)
+            # Analyze sentiment for each quote
+            data['sentiment'] = data['quote'].apply(analyze_sentiment)
             
             # Display the resulting dataframe
             st.write(data)
@@ -40,15 +39,10 @@ def main():
             processed_data = output.getvalue()
             
             # Provide download link for the new CSV file
-            st.download_button(
-                label='Download CSV with Sentiments',
-                data=processed_data,
-                file_name='text_with_sentiments.csv',
-                mime='text/csv'
-            )
+            st.download_button(label='Download CSV with Sentiments',
+                               data=processed_data,
+                               file_name='quotes_with_sentiments.csv',
+                               mime='text/csv')
 
 if __name__ == '__main__':
-    # Download VADER for the first run
-    import nltk
-    nltk.download('vader_lexicon')
     main()
