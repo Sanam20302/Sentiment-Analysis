@@ -1,4 +1,4 @@
-pip install -r Requirements.txt
+python -m pip install -r requirements.txt
 import streamlit as st
 import pandas as pd
 from textblob import TextBlob
