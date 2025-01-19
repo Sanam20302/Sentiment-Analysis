@@ -14,3 +14,4 @@ In this application,
 - User can download this new csv file by clicking the download button.
 
 Built with Streamlit, the app features an interactive and user-friendly interface, making it easy to explore sentiment analysis in real time.
+Copy the code to your system and use the command 'streamlit run Sentiment_Analysis_App.py'for trying out.
